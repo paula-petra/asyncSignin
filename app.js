@@ -5,8 +5,16 @@ const submit = document.querySelector('#submit');
 
 //prevent button default
 submit.addEventListener('click', (e) => {
-    login();
     e.preventDefault();
+    login(username,password)
+        .then(msg => {
+            console.log("LOGIN SUCCESSFUL.")
+            console.log("msg")
+        })
+        .catch(err => {
+            console.log("ERROR!")
+            console.log(err)
+        })
 })
 
 //async form validation
@@ -15,13 +23,3 @@ const login = async(username,password) => {
     if(username === 'paula' && password === "petra6425") return 'Welcome!'
     throw 'Incorrect Username or Password'
 }
-
-login(username,password)
-    .then(msg => {
-        console.log("LOGIN SUCCESSFUL.")
-        console.log("msg")
-    })
-    .catch(err => {
-        console.log("ERROR!")
-        console.log(err)
-    })
